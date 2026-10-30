@@ -2,11 +2,49 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>我的扣子作品</title>
+    <title>我的扣子智能体作品</title>
+    <style>
+        body { font-family: sans-serif; background-color: #f4f7f6; padding: 40px; color: #333; }
+        h1 { text-align: center; color: #2c3e50; margin-bottom: 40px; }
+        .container { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+        .card { background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); width: 350px; padding: 25px; text-align: center; transition: transform 0.3s; }
+        .card:hover { transform: translateY(-5px); }
+        .card h2 { font-size: 20px; color: #34495e; margin-bottom: 10px; }
+        .card p { font-size: 14px; color: #666; line-height: 1.6; margin-bottom: 20px; }
+        /* 这里先留白，等你传了截图，可以把下面这行 img 注释解开并替换地址 */
+        .card img { width: 100%; border-radius: 8px; margin-bottom: 20px; }
+        .btn { display: inline-block; background-color: #ff6b81; color: white; padding: 10px 20px; text-decoration: none; border-radius: 6px; font-weight: bold; transition: background 0.3s; }
+        .btn:hover { background-color: #ff4757; }
+        .back-link { display: block; text-align: center; margin-top: 50px; color: #3498db; text-decoration: none; }
+    </style>
 </head>
-<body style="text-align: center; padding: 50px;">
-    <h1>我的扣子（Coze）智能体作品</h1>
-    <p>这里是我做的抓热搜、推书工作流截图！</p>
-    <a href="index.html">👉 返回我的主页</a>
+<body>
+
+    <h1>🤖 我的扣子 (Coze) 智能体作品</h1>
+    
+    <div class="container">
+        <!-- 卡片1：推书热点雷达 -->
+        <div class="card">
+            <h2>📚 推书热点雷达</h2>
+            <p>定时抓取全网热搜，通过大模型智能筛选与书籍相关的热点，自动生成推荐文案并推送到微信。</p>
+            <!-- 如果你把截图传到了 coze-workflows 文件夹，把下面 src 换成截图路径，例如 src="coze-workflows/tuishu.png" -->
+            <!-- <img src="这里替换成你的截图路径" alt="推书截图"> -->
+            <div style="height: 100px; background: #eee; border-radius: 8px; line-height: 100px; margin-bottom: 20px; color: #aaa;">(此处放截图)</div>
+            <!-- 把 href 里的链接换成你扣子的公开分享链接 -->
+            <a href="https://www.coze.cn/store/agent/7674995400046379034?bot_id=true" target="_blank" class="btn">✨ 前往体验</a>
+        </div>
+
+        <!-- 卡片2：AI 短剧工作流 -->
+        <div class="card">
+            <h2>🎬 AI 短剧自动化生成</h2>
+            <p>输入主题或小说大纲，利用扣子工作流调用大模型，自动完成分镜拆解、文案生成与画面提示词输出。</p>
+            <!-- <img src="这里替换成你的截图路径" alt="短剧截图"> -->
+            <div style="height: 100px; background: #eee; border-radius: 8px; line-height: 100px; margin-bottom: 20px; color: #aaa;">(此处放截图)</div>
+            <!-- 把 href 里的链接换成你扣子的公开分享链接 -->
+            <a href="https://www.coze.cn/store/agent/7675976525506166835?bot_id=true" target="_blank" class="btn">✨ 前往体验</a>
+        </div>
+    </div>
+
+    <a href="index.html" class="back-link">⬅️ 返回我的个人主页</a>
 </body>
 </html>
