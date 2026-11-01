@@ -1,31 +1,173 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>我的 AI 学习之路</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>陈住气 · Agent破局之路 | AI作品集</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background-color: #f7f7f5; color: #333; line-height: 1.7; padding: 40px 20px; max-width: 880px; margin: 0 auto; }
+        .header { margin-bottom: 50px; padding-bottom: 30px; border-bottom: 1px solid #e5e5e0; }
+        .header h1 { font-size: 28px; font-weight: 600; color: #4a5568; margin-bottom: 10px; }
+        .header .subtitle { font-size: 16px; color: #718096; margin-bottom: 15px; }
+        .header .contact { font-size: 14px; color: #718096; }
+        .header .contact a { color: #6b8e8e; text-decoration: none; }
+        .section { margin-bottom: 45px; }
+        .section h2 { font-size: 20px; font-weight: 600; color: #4a5568; margin-bottom: 20px; padding-left: 10px; border-left: 4px solid #9bb8b8; }
+        .project-card { background: #fff; padding: 20px; border-radius: 8px; margin-bottom: 18px; border: 1px solid #ebebe8; }
+        .project-card h3 { font-size: 17px; font-weight: 600; color: #2d3748; margin-bottom: 8px; }
+        .project-card .tag { display: inline-block; font-size: 12px; padding: 2px 8px; border-radius: 4px; background: #e6efef; color: #5a7d7d; margin-right: 6px; margin-bottom: 10px; }
+        .project-card .core { background: #f0e6d6; color: #8b6d47; }
+        .project-card p { font-size: 14px; color: #555; margin-bottom: 8px; }
+        .project-card .tech { font-size: 13px; color: #888; margin-bottom: 15px;}
+        /* 按钮样式 */
+        .btn-link { display: inline-block; background-color: #6b8e8e; color: white; padding: 6px 16px; text-decoration: none; border-radius: 4px; font-size: 13px; transition: background 0.3s; }
+        .btn-link:hover { background-color: #537373; }
+        .skill-group { margin-bottom: 18px; }
+        .skill-group h3 { font-size: 16px; font-weight: 600; color: #4a5568; margin-bottom: 8px; }
+        .skill-group ul { list-style: none; padding-left: 0; }
+        .skill-group li { font-size: 14px; color: #555; padding-left: 16px; position: relative; margin-bottom: 4px; }
+        .skill-group li::before { content: "•"; position: absolute; left: 0; color: #9bb8b8; }
+        .review-item { background: #fff; padding: 18px; border-radius: 8px; margin-bottom: 16px; border: 1px solid #ebebe8; }
+        .review-item h3 { font-size: 16px; font-weight: 600; color: #2d3748; margin-bottom: 10px; }
+        .review-item ol { padding-left: 22px; font-size: 14px; color: #555; }
+        .review-item li { margin-bottom: 5px; }
+        .review-item .note { margin-top: 8px; font-size: 13px; color: #999; }
+        .footer { margin-top: 50px; padding-top: 30px; border-top: 1px solid #e5e5e0; font-size: 14px; color: #718096; line-height: 1.8; }
+        @media (max-width: 600px) { body { padding: 25px 15px; } .header h1 { font-size: 24px; } }
+    </style>
 </head>
-<body style="font-family: sans-serif; text-align: center; padding: 50px; background-color: #f8f9fa;">
-    
-    <h1>你好，我是芳芳</h1>
-    <p>跨境电商卖家 | 正在转行 AI 的探索者</p>
-    
-    <hr style="width: 50%; margin: 30px auto;">
-    
-    <h3>👇 我的作品集 👇</h3>
-    
-    <!-- 这个按钮点进去就是你的日记 -->
-    <div style="margin: 20px;">
-        <a href="diary.html" style="font-size: 18px; color: #3498db; text-decoration: none;">
-            📝 点击查看：AI 日记自动排版助手
-        </a>
+<body>
+    <div class="header">
+        <h1>陈住气 · Agent破局之路</h1>
+        <p class="subtitle">跨境电商转行AI探索者 | 从0到1落地AI应用</p>
+        <p class="contact">
+            📮 邮箱：<a href="mailto:2598864934@qq.com">2598864934@qq.com</a>
+            &nbsp;&nbsp;
+            🔗 <a href="https://avon-ai2026.github.io/my-ai-website/" target="_blank">在线作品集</a>
+        </p>
     </div>
-    
-    <!-- 这个按钮点进去就是你的扣子作品 -->
-    <div style="margin: 20px;">
-        <a href="bot.html" style="font-size: 18px; color: #3498db; text-decoration: none;">
-            🤖 点击查看：扣子智能体工作流
-        </a>
+
+    <div class="section">
+        <h2>🏆 项目总览（共4个）</h2>
+
+        <div class="project-card">
+            <h3>AI 日记自动总结与公众号排版助手</h3>
+            <span class="tag core">核心作品</span>
+            <span class="tag">Python</span>
+            <span class="tag">PyCharm</span>
+            <p>读取本地 diary.txt 文件，调用 DeepSeek 大模型 API，将心情日记总结并生成「莫兰迪极简风」HTML 代码，自动打开浏览器预览，支持一键复制到公众号。</p>
+            <p class="tech">技术栈：Python、requests、DeepSeek API、.bat 批处理脚本</p>
+            <!-- 按钮：跳转到日记页面 -->
+            <a href="diary.html" class="btn-link">👉 点击查看在线演示</a>
+        </div>
+
+        <div class="project-card">
+            <h3>推书热点雷达 Bot</h3>
+            <span class="tag">扣子 Coze</span>
+            <span class="tag">早期探索</span>
+            <p>自动抓取全网/微博热搜，通过大模型筛选出适配视频号推书的情感、职场、成长类热点，生成拆解文案与标题，最终推送至微信。</p>
+            <p class="tech">技术栈：扣子工作流搭建、Server酱微信推送、大模型提示词设计</p>
+            <!-- 按钮：跳转到扣子页面 -->
+            <a href="bot.html" class="btn-link">👉 查看扣子截图与体验链接</a>
+        </div>
+
+        <div class="project-card">
+            <h3>AI 动漫短剧爆款拆解雷达 Bot</h3>
+            <span class="tag">扣子 Coze</span>
+            <p>抓取今日头条热榜与百度搜索结果，采用两段式大模型（先筛选漫剧、再深度拆解），自动分析剧本逻辑、爽点、变现方式，支持发布分享给他人使用。</p>
+            <p class="tech">技术栈：多数据源节点连接、数组转文本处理、变量深度绑定、Bot发布与分享</p>
+            <!-- 按钮：跳转到扣子页面 -->
+            <a href="bot.html" class="btn-link">👉 查看扣子截图与体验链接</a>
+        </div>
+
+        <div class="project-card">
+            <h3>AI 舞蹈运镜工具（本地版）</h3>
+            <span class="tag">Python</span>
+            <span class="tag">计算机视觉</span>
+            <p>自动识别视频中舞者位置，实现自动跟拍、推拉、横移等运镜效果。</p>
+            <p class="tech">技术栈：Python 3.11、OpenCV、MediaPipe、.venv虚拟环境</p>
+        </div>
     </div>
-    
+
+    <div class="section">
+        <h2>🧠 能力收获</h2>
+        <div class="skill-group">
+            <h3>💻 Python 核心与网络请求</h3>
+            <ul>
+                <li>掌握文件读写逻辑，可实现 txt 读取、html 结果导出</li>
+                <li>熟悉第三方包安装与调用（requests、os、webbrowser 等）</li>
+                <li>理解 API 调用原理，掌握请求头、API Key、请求体结构</li>
+            </ul>
+        </div>
+        <div class="skill-group">
+            <h3>🧩 扣子（Coze）工作流与提示词工程</h3>
+            <ul>
+                <li>熟悉「开始 → 插件 → 大模型 → 代码/HTTP请求 → 结束」流水线逻辑</li>
+                <li>可完成多节点变量映射与数据传递</li>
+                <li>能通过提示词约束大模型输出格式，定向生成指定HTML代码</li>
+            </ul>
+        </div>
+        <div class="skill-group">
+            <h3>🛠️ 系统排错与问题排查（核心优势）</h3>
+            <ul>
+                <li>可识别常见报错：401权限错误、404路径错误、KeyError字段缺失</li>
+                <li>理解工作目录、虚拟环境原理，熟悉Windows路径问题与.bat脚本</li>
+                <li>掌握基础排查方法：print打印调试、版本回退、路径校验</li>
+            </ul>
+        </div>
+        <div class="skill-group">
+            <h3>🧭 认知与心态升级</h3>
+            <ul>
+                <li>解决问题优先绕开底层死磕，用最快方式达成业务目标</li>
+                <li>明确非科班切入AI的核心优势：懂业务场景、会用工具拼凑方案、能独立修Bug</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>📁 项目踩坑复盘</h2>
+        <div class="review-item">
+            <h3>推书热点雷达 Bot（扣子 Coze）</h3>
+            <ol>
+                <li>定时触发功能受限：扣子原生定时能力不足，转向「外部API触发 + cron-job定时」方案</li>
+                <li>数据格式不兼容：热搜插件输出为数组，直接传入大模型无法识别，新增「数组转文本」节点解决</li>
+                <li>变量绑定错误：大模型节点仅识别默认input字段，自定义变量名导致数据传递失败</li>
+                <li>HTTP推送配置困难：Server酱接口参数格式不明确，混淆 form-data 与 x-www-form-urlencoded</li>
+                <li>微信推送失败：误将Server酱退出登录链接作为SendKey，导致权限校验报错</li>
+            </ol>
+            <p class="note">备注：定时推送功能最终未完整落地</p>
+        </div>
+
+        <div class="review-item">
+            <h3>AI 动漫短剧爆款拆解（扣子 Coze）</h3>
+            <ol>
+                <li>多数据源接入失败：抖音插件异常、B站API风控拦截、全网热搜返回空数组</li>
+                <li>网页解析失效：动态渲染内容无法通过常规选择器抓取</li>
+                <li>代码节点报错：传入数据格式非数组，导致 list is not iterable 错误</li>
+                <li>大模型链路断裂：双大模型节点间输出字段绑定错误，误将 reasoning_content 作为结果传递</li>
+                <li>定时触发超时：扣子全链路处理时长超过30秒，第三方定时服务报超时失败</li>
+            </ol>
+            <p class="note">备注：定时任务最终未落地</p>
+        </div>
+
+        <div class="review-item">
+            <h3>AI 视频舞蹈运镜（Python本地）</h3>
+            <ol>
+                <li>Python版本冲突：MediaPipe最高支持Python 3.12，与本机3.14版本不兼容，降级至3.11解决</li>
+                <li>文件后缀陷阱：记事本新建文件自动追加.txt后缀，导致依赖文件读取失败</li>
+                <li>虚拟环境隔离：PyCharm新建.venv环境未继承全局库，出现 No module named 'cv2'</li>
+                <li>缩进格式错误：代码传输导致空格与Tab混用，触发大量IndentationError</li>
+                <li>库版本不兼容：新版mediapipe移除solutions模块，降级至0.10.14版本解决</li>
+                <li>文件路径问题：视频文件名重复后缀+工作目录不匹配，改用绝对路径修复</li>
+                <li>视频输出卡顿：mp4v编码器性能不足，导致生成视频画面不流畅</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>💡 关于我：尽管仍在持续熟悉Python与Coze，但从AI新手小白完成0到1的突破，成长清晰可见。</p>
+        <p>不断试错、持续迭代，送给同在AI成长路上的我们：钻研遇阻时，不妨让大脑放空，答案往往自然浮现。</p>
+    </div>
 </body>
 </html>
