@@ -6,7 +6,7 @@
     <title>我的迷你世界</title>
     <style>
         /* 基础色调 */
-        :root{
+:root{
     --light-purple-bg:#f3eef9;
     --card-bg:#f7f2fc;
     --text-main:#4b3863;
@@ -15,7 +15,7 @@
     --title-color:#3f2c56;
 }
 
-/* 1. 整体背景：浅紫渐变 + 极淡宣纸纹理叠加 */
+/* 整体背景：浅紫渐变 + 极淡宣纸纹理叠加 */
 body{
     background-color: var(--light-purple-bg);
     background-image: 
@@ -23,23 +23,23 @@ body{
         url("https://www.transparenttextures.com/patterns/paper-fibers.png");
     background-size: auto, 300px 300px;
     color:var(--text-main);
-    /* 2. 古风柔和字体：宋体优先，兼顾清晰好读 */
+    /* 古风柔和字体 */
     font-family: "Noto Serif SC", "Source Han Serif SC", "SimSun", "Microsoft YaHei", serif;
 }
 
-/* 3. 方块按钮：浅紫边框 + 柔阴影 + 悬浮上浮效果 */
-.block-card, .card{
+/* ✅重点！改成你的 class：.mini-block */
+.mini-block{
     background-color:var(--card-bg);
-    border-color: var(--border-color);
+    border:2px solid var(--border-color);
     box-shadow: 3px 3px 8px rgba(150,120,190,0.15);
     transition: all 0.25s ease;
 }
-.block-card:hover, .card:hover{
+.mini-block:hover{
     transform: translateY(-3px);
     box-shadow: 4px 6px 12px rgba(150,120,190,0.22);
 }
 
-/* 4. 文字配色统一 */
+/* 文字配色统一 */
 h1,h2,h3{
     color:var(--title-color);
     font-weight: 600;
@@ -48,7 +48,7 @@ h1,h2,h3{
     color:var(--text-sub);
 }
 
-/* 5. 头像：柔化紫光晕，更温润 */
+/* 头像：柔化紫光晕 */
 .avatar-wrap img{
     box-shadow: 0 0 18px rgba(184,162,216,0.4);
 }
