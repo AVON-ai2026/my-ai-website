@@ -111,7 +111,29 @@ h1,h2,h3{
                 display: block;
             }
         }
-        .mini-block{
+        :root{
+    --light-purple-bg:#f3eef9;
+    --card-bg:#f7f2fc;
+    --text-main:#4b3863;
+    --text-sub:#7c6b94;
+    --border-color:#b8a2d8;
+    --title-color:#3f2c56;
+}
+
+body{
+    background-color: var(--light-purple-bg);
+    background-image: 
+        linear-gradient(180deg, rgba(243,238,249,0.92), rgba(239,230,244,0.92)),
+        url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+    background-size: auto, 300px 300px;
+    color:var(--text-main);
+    font-family: "Noto Serif SC", "Source Han Serif SC", "SimSun", "Microsoft YaHei", serif;
+}
+.avatar img{
+    box-shadow: 0 0 18px rgba(184,162,216,0.4);
+}
+
+.mini-block{
     background-color: #f7f2fc !important;
     border:3px solid #b8a2d8 !important;
     box-shadow: 3px 3px 8px rgba(150,120,190,0.15) !important;
