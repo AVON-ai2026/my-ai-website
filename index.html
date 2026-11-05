@@ -5,104 +5,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>我的迷你世界</title>
     <style>
-        /* 基础色调 */
-:root{
-    --light-purple-bg:#f3eef9;
-    --card-bg:#f7f2fc;
-    --text-main:#4b3863;
-    --text-sub:#7c6b94;
-    --border-color:#b8a2d8;
-    --title-color:#3f2c56;
-}
+        :root{
+            --light-purple-bg:#f3eef9;
+            --card-bg:#f7f2fc;
+            --text-main:#4b3863;
+            --text-sub:#7c6b94;
+            --border-color:#b8a2d8;
+            --title-color:#3f2c56;
+            --primary-purple:#d8c8ee;
+            --ink-black:#332842;
+            --mini-pink:#e8dcf5;
+        }
 
-/* 整体背景：浅紫渐变 + 极淡宣纸纹理叠加 */
-body{
-    background-color: var(--light-purple-bg);
-    background-image: 
-        linear-gradient(180deg, rgba(243,238,249,0.92), rgba(239,230,244,0.92)),
-        url("https://www.transparenttextures.com/patterns/paper-fibers.png");
-    background-size: auto, 300px 300px;
-    color:var(--text-main);
-    /* 古风柔和字体 */
-    font-family: "Noto Serif SC", "Source Han Serif SC", "SimSun", "Microsoft YaHei", serif;
-}
+        body{
+            background-color: var(--light-purple-bg);
+            background-image: 
+                linear-gradient(180deg, rgba(243,238,249,0.92), rgba(239,230,244,0.92)),
+                url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+            background-size: auto, 300px 300px;
+            color:var(--text-main);
+            font-family: "Noto Serif SC", "Source Han Serif SC", "SimSun", "Microsoft YaHei", serif;
+            margin:0;
+            padding-bottom:40px;
+        }
 
-/* ✅重点！改成你的 class：.mini-block */
-.mini-block{
-    background-color:var(--card-bg);
-    border:2px solid var(--border-color);
-    box-shadow: 3px 3px 8px rgba(150,120,190,0.15);
-    transition: all 0.25s ease;
-}
-.mini-block:hover{
-    transform: translateY(-3px);
-    box-shadow: 4px 6px 12px rgba(150,120,190,0.22);
-}
-
-/* 文字配色统一 */
-h1,h2,h3{
-    color:var(--title-color);
-    font-weight: 600;
-}
-.subtitle, .subtitle-top{
-    color:var(--text-sub);
-}
-
-/* 头像：柔化紫光晕 */
-.avatar-wrap img{
-    box-shadow: 0 0 18px rgba(184,162,216,0.4);
-}
-        /* 古风背景装饰（建议自己找一张好看的图替换网址） */
+        /* 淡淡的背景装饰层 */
         .ancient-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=2070&auto=format&fit=crop'); /* 临时占位图 */
+            background-image: url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=2070&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
-            opacity: 0.15; /* 透明度调低，不抢字 */
+            opacity: 0.12;
             z-index: -1;
         }
-        /* 迷你世界方块按钮 */
-        .mini-block {
-            background-color: var(--primary-purple);
-            /* 给方块加一点立体的像素阴影 */
-            border: 3px solid var(--ink-black);
-            box-shadow: 4px 4px 0px var(--ink-black);
-            border-radius: 4px;
-            padding: 20px;
-            margin: 15px;
-            width: 200px;
-            cursor: pointer;
-            transition: all 0.1s ease;
-            display: inline-block;
+
+        /* 方块卡片 */
+        .mini-block{
+            background-color:var(--card-bg);
+            border:3px solid var(--border-color);
+            box-shadow: 3px 3px 8px rgba(150,120,190,0.15);
+            border-radius:4px;
+            padding:20px;
+            margin:15px;
+            width:200px;
+            cursor:pointer;
+            transition: all 0.25s ease;
         }
-        .mini-block:hover {
-            transform: translate(2px, 2px); /* 按下时的下沉效果 */
-            box-shadow: 2px 2px 0px var(--ink-black);
+        .mini-block:hover{
+            transform: translateY(-3px);
+            box-shadow: 4px 6px 14px rgba(150,120,190,0.25);
             background-color: var(--mini-pink);
         }
         .mini-block h3 {
             margin: 0 0 10px 0;
             font-size: 20px;
+            color:var(--title-color);
         }
         .mini-block p {
             margin: 0;
             font-size: 14px;
-            color: #555;
+            color: var(--text-sub);
         }
-        /* 头像样式 */
+
+        /* 头像 */
         .avatar {
             width: 150px;
             height: 150px;
             border-radius: 50%;
-            border: 4px solid var(--ink-black);
-            box-shadow: 4px 4px 0px var(--primary-purple);
+            border: 4px solid var(--border-color);
+            box-shadow: 0 0 18px rgba(184,162,216,0.4);
             object-fit: cover;
             margin-top: 50px;
         }
+
         /* 手机适配 */
         @media (max-width: 600px) {
             .mini-block {
@@ -111,38 +90,6 @@ h1,h2,h3{
                 display: block;
             }
         }
-        :root{
-    --light-purple-bg:#f3eef9;
-    --card-bg:#f7f2fc;
-    --text-main:#4b3863;
-    --text-sub:#7c6b94;
-    --border-color:#b8a2d8;
-    --title-color:#3f2c56;
-}
-
-body{
-    background-color: var(--light-purple-bg);
-    background-image: 
-        linear-gradient(180deg, rgba(243,238,249,0.92), rgba(239,230,244,0.92)),
-        url("https://www.transparenttextures.com/patterns/paper-fibers.png");
-    background-size: auto, 300px 300px;
-    color:var(--text-main);
-    font-family: "Noto Serif SC", "Source Han Serif SC", "SimSun", "Microsoft YaHei", serif;
-}
-.avatar img{
-    box-shadow: 0 0 18px rgba(184,162,216,0.4);
-}
-
-.mini-block{
-    background-color: #f7f2fc !important;
-    border:3px solid #b8a2d8 !important;
-    box-shadow: 3px 3px 8px rgba(150,120,190,0.15) !important;
-    transition: all 0.25s ease;
-}
-.mini-block:hover{
-    transform: translateY(-3px);
-    box-shadow: 4px 6px 12px rgba(150,120,190,0.22) !important;
-}
     </style>
 </head>
 <body>
@@ -150,28 +97,24 @@ body{
     
     <!-- 首页头部 -->
     <div style="text-align: center;">
-        <!-- 记得把这里的 src 换成你仓库里图片的真实名字 -->
         <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=Felix" alt="我的头像" class="avatar">
-        <h1 style="color: var(--ink-black); margin-top: 20px; font-size: 32px; letter-spacing: 2px;">我的迷你世界</h1>
-        <p style="color: var(--ink-black); font-size: 18px;">在迷你世界里，建造属于自己的人生方块</p>
+        <h1 style="color: var(--title-color); margin-top: 20px; font-size: 32px; letter-spacing: 2px;">我的迷你世界</h1>
+        <p style="color: var(--text-sub); font-size: 18px;">在迷你世界里，建造属于自己的人生方块</p>
     </div>
 
     <!-- 方块按钮组 -->
     <div style="display: flex; flex-wrap: wrap; justify-content: center; max-width: 800px; margin: 30px auto;">
         
-        <!-- 作品集：跳转到你的 bot.html -->
         <div class="mini-block" onclick="location.href='bot.html'">
             <h3>🤖 作品集</h3>
             <p>我建造的AI方块</p>
         </div>
 
-        <!-- 日记副本：跳转到 diary.html -->
-       <div class="mini-block" onclick="alert('日记副本正在装修中，敬请期待...')">
+        <div class="mini-block" onclick="alert('日记副本正在装修中，敬请期待...')">
             <h3>📖 日记副本</h3>
             <p>我隐藏的私密空间</p>
         </div>
         
-        <!-- 目前没有对应的页面，可以暂时留空或跳回主页 -->
         <div class="mini-block" onclick="alert('探索中...')">
             <h3>🗺️ 人生地图</h3>
             <p>我探索的开放世界</p>
@@ -182,6 +125,5 @@ body{
             <p>我的角色介绍</p>
         </div>
     </div>
-
 </body>
 </html>
