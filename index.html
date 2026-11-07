@@ -6,142 +6,84 @@
 <title>我的迷你世界</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  min-height: 100vh;
-  font-family: "Microsoft YaHei", sans-serif;
-  background:
-    radial-gradient(circle at 20% 18%, rgba(255,255,255,0.45), transparent 28%),
-    radial-gradient(circle at 78% 12%, rgba(232,226,255,0.5), transparent 32%),
-    linear-gradient(180deg, #e6e0fa 0%, #c8bfee 55%, #b5a8e8 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px 24px 80px;
-  position: relative;
-}
-.grass {
-  position: fixed;
-  left: 0; right: 0; bottom: 0;
-  height: 58px;
-  background: linear-gradient(180deg, #86da90 0%, #4eb860 100%);
-  z-index: 1;
-}
-.grass::before {
-  content: "";
-  position: absolute;
-  left: 0; right: 0; top: 0;
-  height: 14px;
-  background: linear-gradient(180deg, #9ee886 0%, #73ca5b 100%);
-  clip-path: polygon(
-    0 100%, 5% 35%, 10% 100%, 15% 50%, 20% 100%,
-    25% 40%, 30% 100%, 35% 55%, 40% 100%, 45% 35%,
-    50% 100%, 55% 50%, 60% 100%, 65% 40%, 70% 100%,
-    75% 55%, 80% 100%, 85% 35%, 90% 100%, 95% 50%, 100% 100%
-  );
-}
-.page {
-  position: relative;
-  z-index: 2;
+html, body {
   width: 100%;
-  max-width: 720px;
-  text-align: center;
-}
-.avatar {
-  width: 76px;
-  height: 76px;
-  border-radius: 50%;
-  margin: 0 auto 18px;
-  background: linear-gradient(135deg, #8b5cf6, #6366f1);
-  border: 4px solid rgba(255,255,255,0.65);
-  box-shadow: 0 10px 28px rgba(99,102,241,0.45);
+  height: 100%;
   overflow: hidden;
 }
-.avatar img { width: 100%; height: 100%; object-fit: cover; }
-h1 {
-  font-size: 30px;
-  color: #38267e;
-  letter-spacing: 3px;
-  margin-bottom: 8px;
+
+body {
+  /* 封面底图：铺满全屏，居中显示 */
+  background: url("./cover.jpg") center center / cover no-repeat;
+  font-family: "Microsoft YaHei", sans-serif;
+  position: relative;
 }
-.subtitle {
-  font-size: 13px;
-  color: #57469c;
-  opacity: 0.85;
-  margin-bottom: 36px;
-}
-.buttons {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
-  width: 100%;
-}
-.btn {
-  min-height: 70px;
-  border-radius: 14px;
+
+/* 按钮热区：透明覆盖在图上，只负责点击 */
+.btn-hotspot {
+  position: absolute;
+  display: block;
   text-decoration: none;
-  background: linear-gradient(180deg, #ffffff 0%, #e9e2ff 100%);
-  border: 4px solid #a78bfa;
-  color: #4836a3;
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  box-shadow: 0 10px 24px rgba(99,102,241,0.28);
-  transition: all 0.2s ease;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  /* 悬停时轻微高亮，不破坏原图观感 */
+  transition: background 0.2s ease;
+  border-radius: 12px;
 }
-.btn:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 32px rgba(99,102,241,0.38);
+
+.btn-hotspot:hover {
+  background: rgba(255, 255, 255, 0.12);
 }
-.btn .icon {
-  width: 26px; height: 26px;
-  border-radius: 8px;
-  background: rgba(139,92,246,0.18);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
+
+/* 四个按钮位置（按封面比例定位，可微调） */
+/* 左上：作品集 */
+.btn-1 {
+  top: 38%;
+  left: 16%;
+  width: 32%;
+  height: 14%;
 }
+
+/* 右上：日记副本 */
+.btn-2 {
+  top: 38%;
+  right: 16%;
+  width: 32%;
+  height: 14%;
+}
+
+/* 左下：人生地图 */
+.btn-3 {
+  top: 60%;
+  left: 16%;
+  width: 32%;
+  height: 14%;
+}
+
+/* 右下：关于我 */
+.btn-4 {
+  top: 60%;
+  right: 16%;
+  width: 32%;
+  height: 14%;
+}
+
+/* 手机端适配：按钮高度加大，方便点击 */
 @media (max-width: 640px) {
-  .buttons { grid-template-columns: 1fr; gap: 14px; }
-  h1 { font-size: 24px; letter-spacing: 2px; }
-  .btn { font-size: 16px; letter-spacing: 2px; min-height: 64px; }
+  .btn-hotspot { height: 12%; }
+  .btn-1, .btn-3 { left: 10%; width: 36%; }
+  .btn-2, .btn-4 { right: 10%; width: 36%; }
 }
 </style>
 </head>
 <body>
 
-<div class="grass"></div>
-
-<div class="page">
-  <div class="avatar">
-    <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=Felix" alt="头像">
-  </div>
-  <h1>我的迷你世界</h1>
-  <p class="subtitle">在迷你世界里，建造属于自己的人生方块</p>
-
-  <div class="buttons">
-    <a href="bot.html" class="btn">
-      <span class="icon">📘</span>
-      作品集
-    </a>
-    <a href="#" class="btn">
-      <span class="icon">📝</span>
-      日记副本
-    </a>
-    <a href="#" class="btn">
-      <span class="icon">🗺️</span>
-      人生地图
-    </a>
-    <a href="#" class="btn">
-      <span class="icon">👤</span>
-      关于我
-    </a>
-  </div>
-</div>
+<!-- 四个可点击热区，对应封面四个按钮 -->
+<a href="bot.html" class="btn-hotspot btn-1"></a>
+<a href="#" class="btn-hotspot btn-2"></a>
+<a href="#" class="btn-hotspot btn-3"></a>
+<a href="#" class="btn-hotspot btn-4"></a>
 
 </body>
 </html>
