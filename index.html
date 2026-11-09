@@ -32,7 +32,7 @@ body {
     background 0.25s ease,
     box-shadow 0.25s ease,
     transform 0.15s ease;
-  /* 红色实线调试框，直观看到热区范围 */
+  /* 调试阶段保留红色实线框，确认对齐之后，把这一行注释或者透明度改成0 */
   outline: 2px solid rgba(255, 0, 0, 0.8);
   outline-offset: -2px;
 }
@@ -50,11 +50,11 @@ body {
   background: rgba(255, 255, 255, 0.32);
 }
 
-/* 初始估算坐标，等你截图后校准 */
-.btn-1 { top: 34%; left: 24%; width: 22%; height: 11%; }
-.btn-2 { top: 34%; right: 24%; width: 22%; height: 11%; }
-.btn-3 { top: 60%; left: 24%; width: 22%; height: 11%; }
-.btn-4 { top: 60%; right: 24%; width: 22%; height: 11%; }
+/* ========== 根据截图校准后的全新坐标 ========== */
+.btn-1 { top: 42%; left: 23%; width: 24%; height: 16%; }
+.btn-2 { top: 42%; right: 23%; width: 24%; height: 16%; }
+.btn-3 { top: 64%; left: 23%; width: 24%; height: 16%; }
+.btn-4 { top: 64%; right: 23%; width: 24%; height: 16%; }
 </style>
 </head>
 <body>
