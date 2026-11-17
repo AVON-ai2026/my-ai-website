@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>封面诞生记 · 开发全过程复盘</title>
+<style>
+  /* 基础古风背景 */
+  body {
+    background-color: #f7f2e7; 
+    font-family: "SimSun", "Microsoft YaHei", sans-serif;
+    color: #333;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+  }
+
+  /* 主容器：仿宣纸卷轴质感 */
+  .readme-container {
+    max-width: 800px;
+    width: 100%;
+    background: rgba(255, 254, 248, 0.95);
+    border: 2px solid #b8a898;
+    border-radius: 8px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+
+  /* 标题区 */
+  .header {
+    text-align: center;
+    margin-bottom: 40px;
+    border-bottom: 2px dashed #dcdcdc;
+    padding-bottom: 20px;
+  }
+  h1 { margin: 0 0 10px 0; color: #4a3b2b; font-size: 26px; }
+  .subtitle { color: #777; font-size: 14px; letter-spacing: 1px;}
+
+  /* 阶段卡片 */
+  .stage-card {
+    margin-bottom: 40px;
+    position: relative;
+    padding-left: 20px;
+    border-left: 3px solid #c4b5a4; /* 左侧时间轴主线 */
+  }
+
+  /* 阶段标题前面的小圆点 */
+  .stage-card::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 0;
+    width: 13px;
+    height: 13px;
+    background-color: #b33; /* 红色印章色 */
+    border-radius: 50%;
+    border: 2px solid #fff;
+  }
+
+  .stage-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #4a3b2b;
+    margin-bottom: 10px;
+  }
+
+  .stage-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 15px;
+  }
+
+  /* 黑色代码块样式 */
+  .code-box {
+    background-color: #1e1e1e;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+  .code-header {
+    background-color: #2d2d2d;
+    padding: 8px 12px;
+    color: #888;
+    font-size: 12px;
+    font-family: Consolas, monospace;
+  }
+  pre {
+    margin: 0;
+    padding: 15px;
+    color: #a9b7c6;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 13px;
+    line-height: 1.5;
+    overflow-x: auto;
+  }
+
+  /* 代码语法高亮 */
+  .tag { color: #e8bf6a; }
+  .attr { color: #bababa; }
+  .string { color: #a5c261; }
+  .comment { color: #808080; font-style: italic; }
+
+  /* 底部返回按钮 */
+  .back-btn {
+    display: block;
+    width: 200px;
+    margin: 40px auto 0;
+    text-align: center;
+    padding: 10px 0;
+    background-color: #4a3b2b;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: 0.3s;
+  }
+  .back-btn:hover { background-color: #6b5a47; }
+</style>
+</head>
+<body>
+
+<div class="readme-container">
+  
+  <div class="header">
+    <h1>🖥️ 封面诞生记 · 开发全过程复盘</h1>
+    <div class="subtitle">从零到一搭建“迷你世界”主页</div>
+  </div>
+
+  <!-- 阶段 1 -->
+  <div class="stage-card">
+    <div class="stage-title">阶段一：放弃 Base64，使用外部图片引入</div>
+    <div class="stage-desc">
+      最初为了省事使用了巨长的 Base64 代码内嵌图片，导致网页加载耗时数分钟。后来果断优化为外链引入，并将 SVG 的 viewBox 严格控制在 100x100 的坐标系内。
+    </div>
+    <div class="code-box">
+      <div class="code-header">index.html - 背景引入</div>
+      <pre><code><span class="comment">&lt;!-- 替换为外部图片，实现秒开 --&gt;</span>
+<span class="tag">&lt;svg</span> <span class="attr">class</span>=<span class="string">"hotspot-svg"</span> <span class="attr">viewBox</span>=<span class="string">"0 0 100 100"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;image</span> <span class="attr">href</span>=<span class="string">"home.png"</span> <span class="attr">width</span>=<span class="string">"100"</span> <span class="attr">height</span>=<span class="string">"100"</span> <span class="tag">/&gt;</span>
+<span class="tag">&lt;/svg&gt;</span></code></pre>
+    </div>
+  </div>
+
+  <!-- 阶段 2 -->
+  <div class="stage-card">
+    <div class="stage-title">阶段二：绘制透明热区，实现精准点击</div>
+    <div class="stage-desc">
+      因为按钮是画在背景图里的（不是独立的 DOM 元素），我利用 SVG 的 &lt;rect&gt; 标签，在对应的坐标上覆盖了四个透明的矩形框，充当点击热区。
+    </div>
+    <div class="code-box">
+      <div class="code-header">index.html - 热区绘制</div>
+      <pre><code><span class="comment">&lt;!-- 例如“作品集”热区，x/y 控制位置，width/height 控制大小 --&gt;</span>
+<span class="tag">&lt;rect</span> <span class="attr">fill</span>=<span class="string">"transparent"</span> <span class="attr">class</span>=<span class="string">"hotspot-rect"</span> 
+      <span class="attr">x</span>=<span class="string">"24.7"</span> <span class="attr">y</span>=<span class="string">"46.7"</span> 
+      <span class="attr">width</span>=<span class="string">"22"</span> <span class="attr">height</span>=<span class="string">"10.3"</span> <span class="tag">/&gt;</span></code></pre>
+    </div>
+  </div>
+
+  <!-- 阶段 3 -->
+  <div class="stage-card">
+    <div class="stage-title">阶段三：注入交互，悬浮高亮与页面跳转</div>
+    <div class="stage-desc">
+      给透明热区绑定了 onclick 跳转页面，并通过 onmouseover 和 onmouseout 事件，动态修改矩形的填充色和边框，实现了类似游戏里“选中目标”的像素悬浮反馈。
+    </div>
+    <div class="code-box">
+      <div class="code-header">index.html - 交互逻辑</div>
+      <pre><code><span class="tag">&lt;rect</span> <span class="attr">fill</span>=<span class="string">"transparent"</span> <span class="attr">class</span>=<span class="string">"hotspot-rect"</span> <span class="attr">x</span>=<span class="string">"24.7"</span> <span class="attr">y</span>=<span class="string">"46.7"</span> <span class="attr">width</span>=<span class="string">"22"</span> <span class="attr">height</span>=<span class="string">"10.3"</span> 
+      <span class="attr">onclick</span>=<span class="string">"location.href='bot.html'"</span>
+      <span class="attr">onmouseover</span>=<span class="string">"this.setAttribute('fill', 'rgba(255,255,255,0.15)'); this.style.cursor='pointer';"</span>
+      <span class="attr">onmouseout</span>=<span class="string">"this.setAttribute('fill', 'transparent');"</span> 
+      <span class="attr">style</span>=<span class="string">"transition: all 0.2s ease;"</span> <span class="tag">/&gt;</span></code></pre>
+    </div>
+  </div>
+
+  <a href="index.html" class="back-btn">← 返回迷你世界</a>
+
+</div>
+
+</body>
+</html>
