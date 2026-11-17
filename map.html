@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>人生地图</title>
+<style>
+
+/* 1. 左侧文字卡片的悬浮效果 */
+g[transform]:hover rect {
+  fill: #fffdf5;
+  filter: drop-shadow(0px 6px 12px rgba(0,0,0,0.12));
+  transition: all 0.3s ease;
+}
+
+/* 2. 右侧图片的悬浮效果（只针对 image 标签，安全放大） */
+image.sticker {
+  transition: all 0.3s ease;
+}
+image.sticker:hover {
+  transform: scale(1.03);
+  filter: drop-shadow(0px 8px 16px rgba(0,0,0,0.2)) brightness(1.05);
+}
+
+/* 3. 操作说明卡片的悬浮效果（只加阴影，绝不用 transform，防止乱飞） */
+g.sticker {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+g.sticker:hover {
+  filter: drop-shadow(0px 8px 16px rgba(0,0,0,0.15));
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  background-color:#f7f2e7;
+}
+svg{
+  width:100vw;
+  height:100vh;
+  display:block;
+}
+</style>
+</head>
+<body>
+
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+  <!-- 定义羽化模糊滤镜 -->
+  <defs>
+    <filter id="fadeEdge">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feMask>
+        <feFlood flood-color="white"/>
+        <feComposite in="blur" operator="in"/>
+      </feMask>
+    </filter>
+<!-- 插入到这里 -->
+  <filter id="inkBrush" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.08" numOctaves="4" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="25" xChannelSelector="R" yChannelSelector="G" />
+  </filter>
+    <!-- 径向渐变蒙版（更自然的四周淡去） -->
+    <mask id="softMask">
+      <rect width="1000" height="1000" fill="white"/>
+      <radialGradient id="grad" cx="60%" cy="60%" r="200%">
+        <stop offset="0%" stop-color="#fff"/>
+        <stop offset="100%" stop-color="#000"/>
+      </radialGradient>
+      <rect width="1000" height="1000" fill="url(#grad)"/>
+    </mask>
+<style>
+.bug-card {
+  cursor: pointer;
+}
+</style>
+  </defs>
+<!-- 便签1 开局尝试 · 纯代码初探 -->
+<g transform="translate(-430,7) scale(1.6)">
+  <rect width="320" height="125" rx="6" fill="#fffef8" stroke="#b8a898" stroke-width="1.5"/>
+<rect x="285" y="-1" width="25" height="25" rx="4" fill="#b33" opacity="0.85"/>
+  <text x="297.5" y="16.7" font-size="14" fill="#fff" text-anchor="middle" font-family="SimSun" font-weight="bold">壹</text>
+  <text x="10" y="22" font-size="13" fill="#333">【起步尝试 · 纯代码阶段】</text>
+  <text x="10" y="40" font-size="11" fill="#444">最开始全程使用纯代码制作主页封面，只能做出简约纯色排版，</text>
+  <text x="10" y="56" font-size="11" fill="#444">样式单一死板，无法实现想要的精致彩绘风格。</text>
+  <text x="10" y="76" font-size="13" fill="#333">【AI导师助手】</text>
+  <text x="10" y="92" font-size="11" fill="#444">精准提供基础封面代码结构，逻辑干净、结构规整，</text>
+ <text x="10" y="108" font-size="11" fill="#444">从零搭建了整套页面骨架，为后续升级铺垫了完整基础。</text>
+</g>
+
+<!-- 便签2 方案革新 · 彩绘背景落地 -->
+<g transform="translate(-430,220) scale(1.6)">
+  <rect width="278" height="125" rx="6" fill="#fffef8" stroke="#b8a898" stroke-width="1.5"/>
+  <rect x="243" y="-1" width="25" height="25" rx="4" fill="#b33" opacity="0.85"/>
+  <text x="255.5" y="16.3" font-size="14" fill="#fff" text-anchor="middle" font-family="SimSun" font-weight="bold">贰</text>
+  <text x="10" y="22" font-size="13" fill="#333">【方案升级 · 背景嵌入阶段】</text>
+  <text x="10" y="40" font-size="11" fill="#444">更换思路，采用背景图嵌入代码模式，突破纯色限制，</text>
+  <text x="10" y="56" font-size="11" fill="#444">画面贴近理想彩绘效果，质感大幅提升。</text>
+  <text x="10" y="76" font-size="13" fill="#333">【AI导师助手】</text>
+  <text x="10" y="92" font-size="11" fill="#444">主动突破纯代码局限，率先提出背景图嵌入 SVG 方案，</text>
+  <text x="10" y="108" font-size="11" fill="#444">成功帮画面升级到彩绘精美风格，制作思路成功拓宽。</text>
+</g>
+
+<!-- 便签3 交互升级 · 动态质感优化 -->
+<g transform="translate(-430,435) scale(1.6)">
+  <rect width="278" height="150" rx="6" fill="#fffef8" stroke="#b8a898" stroke-width="1.5"/>
+  <rect x="243" y="-1" width="25" height="25" rx="4" fill="#b33" opacity="0.85"/>
+  <text x="255.5" y="16.3" font-size="14" fill="#fff" text-anchor="middle" font-family="SimSun" font-weight="bold">叁</text>
+  <text x="10" y="22" font-size="13" fill="#333">【交互美化 · 灵动优化阶段】</text>
+  <text x="10" y="40" font-size="11" fill="#444">成功使用背景嵌入代码后，画面好看但偏静态死板。</text>
+  <text x="10" y="56" font-size="11" fill="#444">我开始优化细节，给按钮添加悬浮白光、光晕特效，</text>
+  <text x="10" y="76" font-size="11" fill="#444">让静态封面拥有动态交互质感，整体变得灵动精致。</text>
+  <text x="10" y="95" font-size="13" fill="#333">【AI导师助手】</text>
+  <text x="10" y="110" font-size="11" fill="#444">配合调试悬浮样式、光晕效果，</text>
+  <text x="10" y="123" font-size="11" fill="#444">但前期忽略 SVG 坐标原点规则、滤镜书写规范，</text>
+  <text x="10" y="138" font-size="11" fill="#444">导致出现边框错位、溢出、黑边问题，走了部分弯路。</text>
+</g>
+
+<!-- 便签4 排坑收尾 · 本地调试通关 -->
+<g transform="translate(-430,691) scale(1.6)">
+  <rect width="320" height="135" rx="8" fill="#fffef8" stroke="#b8a898" stroke-width="1.5"/>
+  <rect x="285" y="-1" width="25" height="25" rx="4" fill="#b33" opacity="0.85"/>
+  <text x="297.5" y="16.2" font-size="14" fill="#fff" text-anchor="middle" font-family="SimSun" font-weight="bold">肆</text>
+  <text x="10" y="22" font-size="13" fill="#333">【踩坑终解 · 最终通关阶段】</text>
+  <text x="10" y="40" font-size="11" fill="#444">线上部署调试很慢，改代码就要上传，效率极低。</text>
+  <text x="10" y="56" font-size="11" fill="#444">最后更换本地桌面实时调试方式，改代码即时预览，</text>
+  <text x="10" y="72" font-size="11" fill="#444">反复对齐热区、校准样式，彻底解决所有 bug，完成最终成品。</text>
+  <text x="10" y="92" font-size="13" fill="#333">【AI导师助手】</text>
+  <text x="10" y="108" font-size="11" fill="#444">后期修正方案，配合精细校准收尾。</text>
+ <text x="10" y="123" font-size="11" fill="#444">配合逐行纠错、精细对齐，和我一起完成本次封面完整制作。</text>
+</g>
+
+  <!-- 古巷图，套上柔和蒙版，边缘慢慢融入黄底 -->
+  <image href="map_bg.png" width="1000" height="1000" preserveAspectRatio="xMidYMid meet" mask="url(#softMask)" />
+<image class="sticker" x="740" y="10" width="663" height="180" href="sticker_1.png" />
+<image class="sticker" x="680" y="210" width="1300" height="195" href="sticker_2.png" />
+<image class="sticker" x="740" y="410" width="663" height="290" href="sticker_3.png" />
+<image class="sticker" x="720" y="700" width="1300" height="185" href="sticker_4.png" />
+<a target="_blank" href="code-readme.html">
+<g class="sticker" transform="translate(880,778)">
+  <rect width="360" height="220" rx="8" fill="#f7f2e7" stroke="#44382b" stroke-width="1.5"/>
+  <text x="180" y="30" text-anchor="middle" font-family="SimSun" font-size="18" fill="#44382b">操作说明 · 贴图代码模板</text>
+  <text x="20" y="60" font-family="SimSun" font-size="11" fill="#44382b">1. 贴图文件和html放在同一个文件夹</text>
+  <text x="20" y="82" font-family="SimSun" font-size="11" fill="#44382b">2. 修改x,y调整位置，width/height改尺寸</text>
+  <text x="20" y="104" font-family="SimSun" font-size="11" fill="#44382b">3. href替换成你的图片文件名</text>
+  <text x="20" y="135" font-family="Consolas,monospace" font-size="10" fill="#333">
+    &lt;image class="sticker" x="180" y="220"
+  </text>
+  <text x="20" y="155" font-family="Consolas,monospace" font-size="10" fill="#333">
+    width="85" height="85" href="step1.png"/&gt;
+  </text>
+  <text x="20" y="180" font-family="SimSun" font-size="10" fill="#666">✦ 悬浮自动高亮，点击查看完整文档</text>
+</g>
+</a>
+<!-- ====== 第4层：顶部标题横幅 · 封面诞生记 ====== -->
+<g transform="translate(220,12)">
+  <!-- 外层装裱框（颜色稍深） -->
+  <rect width="560" height="52" rx="2" fill="#f4ecd8" stroke="#a89681" stroke-width="1.5" />
+  
+  <!-- 内层装裱细线（制造书卷的双线感） -->
+  <rect x="6" y="6" width="548" height="40" rx="1" fill="none" stroke="#a89681" stroke-width="1" />
+  
+  <!-- 左右两侧的竖向装饰线（模拟卷轴边缘） -->
+  <line x1="15" y1="10" x2="15" y2="42" stroke="#a89681" stroke-width="2" />
+  <line x1="545" y1="10" x2="545" y2="42" stroke="#a89681" stroke-width="2" />
+
+  <!-- 主标题 -->
+  <text x="280" y="33" text-anchor="middle" font-size="22" fill="#4a3b2b" font-weight="bold" font-family="SimSun" letter-spacing="4">封面诞生记</text>
+  
+  <!--<text x="280" y="48" text-anchor="middle" font-size="11" fill="#776550">点击后续可展开完整叙事（预留）</text>-->
+</g>
+<!-- ⚠️ 支线BUG记录｜AI导师助手踩坑复盘 -->
+<g transform="translate(-145, 910) scale(0.6)" data-zoom="off" class="bug-card" onclick="zoomCard(this)">
+  <rect width="380" height="170" rx="8" fill="#fff8f8" stroke="#994444" stroke-width="2"/>
+  <text x="12" y="24" font-size="14" fill="#882222" font-weight="bold">⚠️ 支线BUG记录｜AI导师助手踩坑复盘</text>
+  <text x="12" y="46" font-size="10.5" fill="#333">BUG① 已定彩绘路线，仍反复引导纯代码，画面无法出彩绘效果</text>
+  <text x="12" y="66" font-size="10.5" fill="#333">BUG② 不熟悉SVG坐标，热区跑偏、边框溢出，反复校准</text>
+  <text x="12" y="86" font-size="10.5" fill="#333">BUG③ 混淆CSS与SVG滤镜，悬浮白光频繁失效</text>
+  <text x="12" y="106" font-size="10.5" fill="#333">BUG④ 很晚才推荐本地调试，大量时间浪费在反复上传部署</text>
+  <text x="12" y="126" font-size="10.5" fill="#333">BUG⑤ 中途提议放弃Base64内嵌，和原定思路冲突</text>
+  <text x="12" y="146" font-size="10.5" fill="#333">BUG⑥ 内联样式和CSS优先级冲突，悬浮高亮时灵时不灵</text>
+</g>
+</svg>  <!-- 原本就有的 svg 结尾 -->
+
+<!-- 把你删掉的代码放在这里，并加上 script 标签 -->
+<script type="text/javascript">
+  function zoomCard(el){
+    // 正常状态：藏在左下角
+    const stateNormal = "translate(-145, 910) scale(0.6)"; 
+    // 放大状态：屏幕正中央
+    const stateZoomed = "translate(200,600) scale(1.3)";
+
+    if(el.dataset.zoom === "on"){
+        el.setAttribute("transform", stateNormal);
+        el.dataset.zoom = "off";
+    }else{
+        el.setAttribute("transform", stateZoomed);
+        el.dataset.zoom = "on";
+        el.parentNode.appendChild(el); // 点击时把它放到最顶层
+    }
+  }
+</script>
+
+</body> <!-- 原本就有的 body 结尾 -->
+</html>
